@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<div class="modal-dialog">
+		<div class="login-form">
+			<div class="modal-content">
+				<div class="tab-content">
+					<div id="user-login-tab" class="tab-pane fade in active">
+						<div class="user-holder modal-header">
+                            <h4 class="text-center" style="margin-bottom: 0;">
+								SIGN IN</h4>
+                            <p class="text-center">Order food from your favorite restaurants.</p>
+						</div>
+						<div class="modal-body">
+							<p class="foodbakery-dev-login-top-msg"></p>
+							<div class="cs-login-pbox">
+								<div class="status status-message"></div>
+								<form method="post"
+									  class="wp-user-form webkit" id=""
+									  action="{% url 'accounts:signIn' %}">
+									{% csrf_token %}
+									<div class="cs-demo-login">
+										<div class="cs-demo-login-lable text-color">Click to login with Demo User
+										</div>
+										<div class="clearfix"></div>
+										<ul class="login-switches">
+											<li>
+												<a href="#" class="btn-red demo-publisher-user">
+													<i class="icon-food"></i> Restaurant</a>
+											</li>
+											<li>
+												<a href="#"
+												   class="btn-red btn-green demo-buyer-user">
+													<i class="icon-user4"></i> Buyer</a>
+											</li>
+										</ul>
+									</div>
+									<div class="input-filed">
+										<i class="icon-user4"></i>
+										<input type="email" name="username" value="" placeholder="E-mail">
+									</div>
+									<div class="input-filed">
+										<i class="icon-unlock-alt"></i>
+										<input type="password" name="password" value="" placeholder="Password">
+									</div>
+									<div class="forget-password">
+										<a href="{% url 'accounts:forgotPassword' %}"
+										   class="cs-forgot-switch forgot-switch">
+											Forgot Password?</a>
+									</div>
+									<div class="input-filed input-field-btn">
+										<div class="ajax-login-button input-button-loader">
+											<input type="submit"
+												   class="cs-bgcolor" value="Log in">
+										</div>
+									</div>
+								</form>
+								<div class="signin-tab-link forget-password">
+									New Here?
+									<a href="{% url 'accounts:registerUser' %}"
+									   class="foodbakery-dev-login-box-btn forgot-switch">Signup</a>
+								</div>
+								<div class="footer-element comment-form-social-connect social_login_ui ">
+									<div class="social-media">
+										<h6><span>Login with</span></h6>
+										<ul>
+											<li><a href="#" title="Facebook" data-original-title="Facebook" class="social_login_login_facebook facebook"><span class="social-mess-top fb-social-login" style="display:none">Please set API key</span><i class="icon-facebook"></i>Sign In With Facebook</a></li>
+											<li><a href="#" title="Twitter" data-original-title="twitter" class="social_login_login_twitter twitter"><span class="social-mess-top tw-social-login" style="display:none">Please set API key</span><i class="icon-twitter3"></i>Sign In With Twitter</a></li>
+											<li><a href="#" rel="nofollow" title="google-plus" data-original-title="google+" class="social_login_login_google gplus"><span class="social-mess-top gplus-social-login" style="display:none">Please set API key</span><i class="icon-google4"></i>Sign In With Google</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

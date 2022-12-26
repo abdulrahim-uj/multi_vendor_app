@@ -1,0 +1,29 @@
+<div class="user-dashboard-menu">
+    <ul>
+        <li class="user-dashboard-menu-children">
+            <a href="javascript:void(0);" class="">
+                <figure class="profile-image">
+                    <img src="{{user_data.profile_picture.url}}"
+                         alt="{{user_data.user.username}}">
+                </figure>
+                {{user_data.user.username}}
+            </a>
+            <ul>
+                <li class="{% if is_active_dashboard %}active{% endif %}">
+                    <a href="{% url 'accounts:getMyPanel' %}">
+                        <i class="icon-dashboard3"></i>Dashboard</a>
+                </li>
+                <li><a href="buyer-bookings.html" class="btn-edit-profile"><i class="icon-file-text2"></i>My
+                    Bookings</a></li>
+                <li><a href="buyer-reviews.html" class="btn-edit-profile"><i class="icon-comment2"></i>My
+                    Reviews</a></li>
+                <li><a href="buyer-orders.html" class="btn-edit-profile"><i class="icon-add_shopping_cart"></i>My
+                    Orders</a></li>
+                <li><a href="buyer-shortlists.html"><i class="icon-heart"></i>Shortlists</a></li>
+                <li><a href="buyer-statement.html"><i class="icon-file-text22"></i>Statement</a></li>
+                <li><a href="buyer-account-setting.html"><i class="icon-build"></i>Account Settings</a></li>
+                <li><a href="{% url 'accounts:signOut' %}"><i class="icon-log-out"></i>Sign out</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

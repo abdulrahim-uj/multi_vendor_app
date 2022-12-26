@@ -1,0 +1,88 @@
+{% load static %}
+<!-- Google Font Family Link Start -->
+{% if google_fonts %}
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800">
+{% endif %}
+<!-- Google Font Family Link End -->
+
+<!-- Bootstrap Link Start-->
+{% if bootstrap %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+{% endif %}
+{% if bootstrap_theme %}
+    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet" />
+{% endif %}
+{% if bootstrap_datepicker %}
+    <link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet">
+{% endif %}
+{% if bootstrap_slider %}
+    <link href="{% static 'css/bootstrap-slider.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Bootstrap Link End-->
+
+<!-- Iconmoon Link Start-->
+{% if icon_moon %}
+    <link href="{% static 'css/iconmoon.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Icon moon Link End-->
+
+<!-- Animate Link Start-->
+{% if animate %}
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Animate Link End-->
+
+<!-- Chosen Link Start-->
+{% if chosen %}
+    <link href="{% static 'css/chosen.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Chosen Link End-->
+
+<!-- Swiper Link Start-->
+{% if swiper %}
+    <link href="{% static 'css/swiper.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Swiper Link End-->
+<!-- Woocommerce Link Start-->
+{% if woo_commerce %}
+    <link href="{% static 'css/woocommerce.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Woocommerce Link End-->
+
+<!-- Pretty Photo Link Start-->
+{% if pretty_photo %}
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+{% endif %}
+<!-- Pretty Photo Link End-->
+
+<!-- Themes / plugin Link Start-->
+{% if style_theme %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endif %}
+
+{% if system_food_backery %}
+    <link href="{% static 'css/cs-foodbakery-plugin.css' %}" rel="stylesheet">
+{% endif %}
+
+{% if colors %}
+    <link href="{% static 'css/color.css' %}" rel="stylesheet">
+{% endif %}
+
+{% if widgets %}
+    <link href="{% static 'css/widget.css' %}" rel="stylesheet">
+{% endif %}
+
+{% if responsive %}
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+{% endif %}
+
+{% if rtl %}
+    <link href="{% static 'css/rtl.css' %}" rel="stylesheet">
+{% endif %}
+
+{% if file_input %}
+    <link href="{% static 'css/custom-file-input.css' %}" rel="stylesheet">
+{% endif %}

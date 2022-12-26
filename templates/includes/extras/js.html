@@ -1,0 +1,128 @@
+{% load static %}
+<!-- Themes / plugin Link End-->
+{% if ajax1112 %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+{% endif %}
+
+{% if modernizer %}
+    <script src="{% static 'js/modernizr.js' %}"></script>
+{% endif %}
+
+{% if bootstrap %}
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+{% endif %}
+
+{% if ie8and9 %}
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endif %}
+
+{% if responsive %}
+    <script src="{% static 'js/responsive.menu.js' %}"></script>
+{% endif %}
+
+{% if swiper %}
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+{% endif %}
+
+{% if bootstrap_datepicker %}
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+{% endif %}
+
+{% if chosen %}
+    <script src="{% static 'js/chosen.js' %}"></script>
+{% endif %}
+
+{% if counter %}
+    <script src="{% static 'js/counter.js' %}"></script>
+{% endif %}
+
+{% if fliters %}
+    <script src="{% static 'js/fliters.js' %}"></script>
+{% endif %}
+
+{% if fitvids %}
+    <script src="{% static 'js/jquery.fitvids.js' %}"></script>
+{% endif %}
+
+{% if growl %}
+    <script src="{% static 'js/jquery.growl.js' %}"></script>
+{% endif %}
+
+{% if match_height %}
+    <script src="{% static 'js/jquery.matchHeight-min.js' %}"></script>
+{% endif %}
+
+{% if masonry %}
+    <script src="{% static 'js/masonry.pkgd.js' %}"></script>
+{% endif %}
+
+{% if skills_progress %}
+    <script src="{% static 'js/skills-progress.js' %}"></script>
+{% endif %}
+
+{% if bootstrap_slider %}
+    <script src="{% static 'js/bootstrap-slider.js' %}"></script>
+{% endif %}
+
+{% if wow %}
+    <script src="{% static 'js/wow.js' %}"></script>
+{% endif %}
+
+{% if functions %}
+    <script src="{% static 'js/functions-plugin.js' %}"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+{% endif %}
+
+{% if file_input %}
+    <script src="{% static 'js/custom-file-input.js' %}"></script>
+{% endif %}
+
+{% if preview_profile_picture %}
+<script type="text/javascript">
+const previewProfilePicture = (event) => {
+    // Get the selected files.
+    const imageFiles = event.target.files;
+    // Get the image path.
+    const imageSrc = URL.createObjectURL(imageFiles[0]);
+    // Select the image preview element.
+    const imagePreviewElement = document.querySelector('#preview_profile_picture');
+    // Assign the path to the image preview element.
+    imagePreviewElement.src = imageSrc;
+};
+</script>
+{% endif %}
+
+{% if preview_cover_photo %}
+<script type="text/javascript">
+const previewCoverPhoto = (event) => {
+    // Get the selected files.
+    const imageFiles = event.target.files;
+    // Get the image path.
+    const imageSrc = URL.createObjectURL(imageFiles[0]);
+    // Select the image preview element.
+    const imagePreviewElement = document.querySelector('#preview_cover_photo');
+    // Assign the path to the image preview element.
+    imagePreviewElement.src = imageSrc;
+};
+</script>
+{% endif %}
+
+{% if preview_license %}
+<script type="text/javascript">
+const previewLicense = (event) => {
+    // Get the selected files.
+    const imageFiles = event.target.files;
+    // Get the image path.
+    const imageSrc = URL.createObjectURL(imageFiles[0]);
+    // Select the image preview element.
+    const imagePreviewElement = document.querySelector('#preview_license');
+    // Assign the path to the image preview element.
+    imagePreviewElement.src = imageSrc;
+};
+</script>
+{% endif %}
