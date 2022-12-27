@@ -31,14 +31,7 @@ def v_profile(request):
         if form_user_profile.is_valid() and form_vendor.is_valid():
             form_user_profile.save()
             form_vendor.save()
-            message = {
-                'raw': [
-                    {
-                        'tag': "success",
-                        'item': "Successfully updated."
-                    }
-                ]
-            }
+            message = "Successfully updated!"
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",
@@ -48,7 +41,7 @@ def v_profile(request):
             izitoast(request=request, model="success", message=message, diversify=diversify)
             return redirect('vendors:vendorProfile')
         else:
-            combined_errors = (form_user_profile.errors + form_vendor.errors)
+            combined_errors = str(form_user_profile.errors) + str(form_vendor.errors)
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",

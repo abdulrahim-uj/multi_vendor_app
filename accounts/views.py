@@ -21,14 +21,7 @@ from vendors.models import Vendor
 def register_user(request):
     # Check user is already signed in or not
     if request.user.is_authenticated:
-        message = {
-            'raw': [
-                {
-                    'tag': "info",
-                    'item': "You are already logged in!"
-                }
-            ]
-        }
+        message = "You are already logged in!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -137,14 +130,7 @@ def register_user(request):
 def register_vendor(request):
     # User is signed in --> then
     if request.user.is_authenticated:
-        message = {
-            'raw': [
-                {
-                    'tag': "info",
-                    'item': "You are already logged in!"
-                }
-            ]
-        }
+        message = "You are already logged in!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -274,14 +260,7 @@ def activate(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        message = {
-            'raw': [
-                {
-                    'tag': "success",
-                    'item': "Your account has been successfully activated!"
-                }
-            ]
-        }
+        message = "Your account has been successfully activated!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -291,14 +270,7 @@ def activate(request, uidb64, token):
         izitoast(request, "success", message, diversify)
         return redirect('accounts:getMyPanel')
     else:
-        message = {
-            'raw': [
-                {
-                    'tag': "danger",
-                    'item': "Invalid activation link!"
-                }
-            ]
-        }
+        message = "Invalid activation link!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -312,14 +284,7 @@ def activate(request, uidb64, token):
 def log_in(request):
     # Check user is already signed in or not
     if request.user.is_authenticated:
-        message = {
-            'raw': [
-                {
-                    'tag': "info",
-                    'item': "You are already logged in!"
-                }
-            ]
-        }
+        message = "You are already logged in!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -334,14 +299,7 @@ def log_in(request):
         user = auth.authenticate(email=email, password=password)
         if user is not None:
             auth.login(request, user)
-            message = {
-                'raw': [
-                    {
-                        'tag': "success",
-                        'item': "You are successfully logged in."
-                    }
-                ]
-            }
+            message = "You are successfully logged in!"
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",
@@ -351,14 +309,7 @@ def log_in(request):
             izitoast(request, "success", message, diversify)
             return redirect('accounts:getMyPanel')
         else:
-            message = {
-                'raw': [
-                    {
-                        'tag': "danger",
-                        'item': "Invalid login credentials."
-                    }
-                ]
-            }
+            message = "Invalid login credentials!"
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",
@@ -409,21 +360,14 @@ def log_in(request):
 
 def log_out(request):
     auth.logout(request)
-    message = {
-        'raw': [
-            {
-                'tag': "info",
-                'item': "You are successfully logged out."
-            }
-        ]
-    }
+    message = "You are successfully logged out!"
     diversify = {
         "position": "topRight",
         "transition_in": "flipInX",
         "transition_out": "flipOutX",
         "time_out": 4000,
     }
-    izitoast(request=request, model="info", message=message, diversify=diversify)
+    izitoast(request=request, model="success", message=message, diversify=diversify)
     return redirect('accounts:signIn')
 
 
@@ -527,31 +471,17 @@ def forgot_password(request):
             email_subject = "Reset Your Password"
             email_template = "accounts/emails/reset-password-email.html"
             send_verification_email(request, user, email_subject, email_template)
-            message = {
-                'raw': [
-                    {
-                        'tag': "success",
-                        'item': "Password reset link has been send to your email address."
-                    }
-                ]
-            }
+            message = "Password reset link has been send to your email address!"
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",
                 "transition_out": "flipOutX",
                 "time_out": 4000,
             }
-            izitoast(request=request, model="success", message=message, diversify=diversify)
+            izitoast(request=request, model="info", message=message, diversify=diversify)
             return redirect('accounts:signIn')
         else:
-            message = {
-                'raw': [
-                    {
-                        'tag': "danger",
-                        'item': "Account does not exist."
-                    }
-                ]
-            }
+            message = "Account does not exist!"
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",
@@ -609,14 +539,7 @@ def reset_password_validate(request, uidb64, token):
 
     if user is not None and default_token_generator.check_token(user, token):
         request.session['uid'] = uid
-        message = {
-            'raw': [
-                {
-                    'tag': "info",
-                    'item': "Please reset your password."
-                }
-            ]
-        }
+        message = "Please reset your password!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -626,14 +549,7 @@ def reset_password_validate(request, uidb64, token):
         izitoast(request=request, model="info", message=message, diversify=diversify)
         return redirect('accounts:resetPassword')
     else:
-        message = {
-            'raw': [
-                {
-                    'tag': "warning",
-                    'item': "This link has been expired!"
-                }
-            ]
-        }
+        message = "This link has been expired!"
         diversify = {
             "position": "topRight",
             "transition_in": "flipInX",
@@ -658,11 +574,11 @@ def reset_password(request):
                 'raw': [
                     {
                         'tag': "success",
-                        'item': "Password reset successfully."
+                        'item': "Password reset successfully!"
                     },
                     {
                         'tag': "info",
-                        'item': "Please login to your account."
+                        'item': "Please login to your account!"
                     }
                 ]
             }
@@ -675,14 +591,7 @@ def reset_password(request):
             izitoast(request=request, model="success", message=message, diversify=diversify)
             return redirect('accounts:signIn')
         else:
-            message = {
-                'raw': [
-                    {
-                        'tag': "danger",
-                        'item': "Password do not match!"
-                    }
-                ]
-            }
+            message = "Password do not match!"
             diversify = {
                 "position": "topRight",
                 "transition_in": "flipInX",

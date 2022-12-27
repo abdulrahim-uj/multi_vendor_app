@@ -30,12 +30,21 @@
 															<ul class="foodbakery-gallery-holder">
 																<li class="gal-img">
 																	<div class="drag-list">
-																		<div class="item-thumb">
-																			<img id="preview_profile_picture"
-																				 class="thumbnail"
-																				 src="{{user_profile.profile_picture.url}}"
-																				 alt="{{user_profile.user.first_name}}" />
-																		</div>
+																		{% if user_profile.profile_picture %}
+																			<div class="item-thumb">
+																				<img id="preview_profile_picture"
+																					 class="thumbnail"
+																					 src="{{user_profile.profile_picture.thumbnail.200x200}}"
+																					 alt="{{user_profile.user.first_name}}" />
+																			</div>
+																		{% else %}
+																			<div class="item-thumb">
+																				<img id="preview_profile_picture"
+																					 class="thumbnail"
+																					 src=""
+																					 alt="{{user_profile.user.first_name}}" />
+																			</div>
+																		{% endif %}
 																	</div>
 																</li>
 															</ul>
@@ -59,12 +68,21 @@
 															<ul class="foodbakery-gallery-holder">
 																<li class="gal-img">
 																	<div class="drag-list">
-																		<div class="item-thumb">
-																			<img id="preview_cover_photo"
-																				 class="thumbnail"
-																				 src="{{user_profile.cover_photo.url}}"
-																				 alt="{{user_profile.user.last_name}}">
-																		</div>
+																		{% if user_profile.cover_photo %}
+																			<div class="item-thumb">
+																				<img id="preview_cover_photo"
+																					 class="thumbnail"
+																					 src="{{user_profile.cover_photo.thumbnail.200x200}}"
+																					 alt="{{user_profile.user.last_name}}">
+																			</div>
+																		{% else %}
+																			<div class="item-thumb">
+																				<img id="preview_cover_photo"
+																					 class="thumbnail"
+																					 src=""
+																					 alt="{{user_profile.user.last_name}}">
+																			</div>
+																		{% endif %}
 																	</div>
 																</li>
 															</ul>
@@ -90,7 +108,7 @@
 																		<div class="item-thumb">
 																			<img id = "preview_license"
 																				 class="thumbnail"
-																				 src="{{vendor.vendor_license.url}}" alt="{{vendor.vendor_name}}">
+																				 src="{{vendor.vendor_license.thumbnail.200x200}}" alt="{{vendor.vendor_name}}">
 																		</div>
 																	</div>
 																</li>

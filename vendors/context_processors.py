@@ -7,5 +7,5 @@ def get_vendor(request):
     except:
         vendor = None
     return {
-        "vendor": vendor,
+        "vendor_data": vendor,
     }

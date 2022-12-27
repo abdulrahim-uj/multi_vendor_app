@@ -15,20 +15,20 @@ def opening(request):
         "bootstrap": True,
         "bootstrap_theme": True,
         "icon_moon": True,
-        "swiper": True, # For Dropdown menu
+        "swiper": True,  # For Dropdown menu
         "style_theme": True,
         "system_food_backery": True,
         "colors": True,
         "widgets": True,
         "responsive": True,
         "toast": True,
-        "bootstrap_datepicker": False,#
-        "bootstrap_slider": False,#
-        "woo_commerce": False,#
-        "pretty_photo": False,#
-        "animate": False,#
-        "chosen": False,#
-        "rtl": False,#
+        "bootstrap_datepicker": False,  #
+        "bootstrap_slider": False,  #
+        "woo_commerce": False,  #
+        "pretty_photo": False,  #
+        "animate": False,  #
+        "chosen": False,  #
+        "rtl": False,  #
         # JS
         "ajax1112": True,
         "counter": True,

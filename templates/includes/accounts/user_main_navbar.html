@@ -1,10 +1,15 @@
+{% load static %}
 <div class="user-dashboard-menu">
     <ul>
         <li class="user-dashboard-menu-children">
             <a href="javascript:void(0);" class="">
                 <figure class="profile-image">
-                    <img src="{{user_data.profile_picture.url}}"
-                         alt="{{user_data.user.username}}">
+                    {% if user_data.profile_picture %}
+                        <img src="{{user_data.profile_picture.thumbnail.200x200}}"
+                             alt="{{user_data.user.username}}" />
+                    {% else %}
+                        <img src="{% static 'extra-images/round_transparent.png' %}" alt="" />
+                    {% endif %}
                 </figure>
                 {{user_data.user.username}}
             </a>

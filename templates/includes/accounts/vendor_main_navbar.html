@@ -1,11 +1,17 @@
+{% load static %}
 <div class="user-dashboard-menu">
     <ul>
         <li class="user-dashboard-menu-children">
             <a href="javascript:void(0);" class="">
                 <figure class="profile-image">
-                    <img src="{{vendor.user_profile.profile_picture.thumbnail.200x200}}"
-                         alt="{{vendor.vendor_name}}"></figure>
-                {{vendor.vendor_name}}
+                    {% if vendor_data.user_profile.profile_picture %}
+                        <img src="{{vendor_data.user_profile.profile_picture.thumbnail.200x200}}"
+                             alt="{{vendor_data.vendor_name}}">
+                    {% else %}
+                        <img src="{% static 'extra-images/round_transparent.png' %}" alt="" />
+                    {% endif %}
+                </figure>
+                {{vendor_data.vendor_name}}
             </a>
             <ul>
                 <li class="{% if is_active_dashboard %}active{% endif %}">
