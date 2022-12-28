@@ -148,3 +148,6 @@ VERSATILEIMAGEFIELD_SETTINGS = {
     'image_key_post_processor': None,
     'progressive_jpeg': False
 }
+
+# OPENCAGE SETTINGS
+OPENCAGE_KEY = config('OPENCAGE_KEY')

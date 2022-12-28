@@ -49,8 +49,9 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ['creator', 'updater', 'auto_id', 'is_deleted']
-        fields = ['profile_picture', 'cover_photo', 'address',
-                  'country', 'state', 'city', 'pin_code', 'latitude', 'longitude']
+        fields = ['profile_picture', 'cover_photo', 'address', 'continent', 'country_code', 'country', 'state_code',
+                  'state', 'city', 'district', 'location_type', 'village', 'county', 'pin_code', 'formatted',
+                  'road_info', 'neighbourhood', 'latitude', 'longitude']
         widgets = {
             'profile_picture': FileInput(attrs={
                 'class': 'foodbakery-dev-gallery-uploader', 'style': 'display:none',
@@ -58,11 +59,11 @@ class UserProfileForm(forms.ModelForm):
             'cover_photo': FileInput(attrs={'class': 'foodbakery-dev-gallery-uploader',
                                             'style': 'display:none',
                                             'onchange': 'previewCoverPhoto(event);'}),
-            'address': TextInput(attrs={'required': 'required'}),
-            'country': TextInput(),
-            'state': TextInput(),
-            'city': TextInput(),
-            'pin_code': NumberInput(),
+            'address': TextInput(attrs={'required': 'required', 'onfocusout': 'auto_fill_all()'}),
+            # 'country': TextInput(),
+            # 'state': TextInput(),
+            # 'city': TextInput(),
+            # 'pin_code': NumberInput(),
             # Normal way to make readonly
             # 'latitude': TextInput(attrs={'class': 'foodbakery-dev-gallery-uploader',
             #                              'readonly': 'readonly'}),
@@ -73,10 +74,20 @@ class UserProfileForm(forms.ModelForm):
             'profile_picture': "Upload Logo",
             'cover_photo': "Upload Cover Image",
             'address': "Address",
+            'continent': "Continent",
+            'country_code': "Country code",
             'country': "Country",
+            'state_code': "State code",
             'state': "State",
             'city': "City",
+            'district': "District",
+            'location_type': "Location type",
+            'village': "Village",
+            'county': "Circle",
             'pin_code': "Zip Code",
+            'formatted': "Long Address",
+            'road_info': "Road info",
+            'neighbourhood': "Neighbourhood",
             'latitude': "Latitude",
             'longitude': "Longitude",
         }
@@ -114,5 +125,9 @@ class UserProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserProfileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
+            # if field in ['continent', 'country_code', 'country', 'state_code', 'state', 'city',
+            #              'district', 'location_type', 'village', 'county', 'pin_code', 'formatted',
+            #              'road_info', 'neighbourhood', 'latitude', 'longitude']:
+            #     self.fields[field].widget.attrs['readonly'] = 'readonly'
             if field == 'latitude' or field == 'longitude':
                 self.fields[field].widget.attrs['readonly'] = 'readonly'

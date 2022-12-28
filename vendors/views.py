@@ -1,11 +1,15 @@
+import json
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse
 from izitoast.functions import izitoast
+from opencage.geocoder import OpenCageGeocode
 
 from accounts.decorators import check_role_vendor
 from accounts.forms import UserProfileForm
@@ -98,3 +102,30 @@ def v_profile(request):
         "preview_license": True,
     }
     return render(request, "vendors/profile.html", context=context)
+
+
+def get_lat_long(request):
+    search_location = request.GET.get('location')
+    try:
+        key = settings.OPENCAGE_KEY
+        geocoder = OpenCageGeocode(key)
+
+        query = search_location
+        result = geocoder.geocode(query)
+        # print(result)
+        # print(result[0]['geometry']['lat'])
+        # print(result[0]['geometry']['lng'])
+        # print(result[0]['formatted'])
+        # print(result[0]['components']['country_code'])
+        # print(result[0]['annotations']['timezone']['name'])
+        # print(result[0]['annotations']['currency']['name'])  # + ['symbol', 'iso_code']
+        # print(result[0]['components'][
+        #           '_type'])  # continent, country, country_code, county, postcode, state, state_code, state_district, village
+        #
+        # print(result[1]['annotations']['roadinfo']['road'])
+        # print(result[1]['components']['neighbourhood'])
+        return HttpResponse(json.dumps(result), content_type='application/javascript')
+    except:
+        message = "Error"
+        # return redirect('vendors:vendorProfile')
+        return HttpResponse(json.dumps(message), content_type='application/javascript')

@@ -1,0 +1,255 @@
+{% load static %}
+<form action="{% url 'vendors:vendorProfile' %}"
+      method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-fields-set">
+        <ul>
+            <li>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="restaurant-info">
+                            <div class="img-holder">
+                                <ul class="foodbakery-gallery-holder">
+                                    <li class="gal-img">
+                                        <div class="drag-list">
+                                            {% if user_profile.profile_picture %}
+                                                <div class="item-thumb">
+                                                    <img id="preview_profile_picture"
+                                                         class="thumbnail"
+                                                         src="{{user_profile.profile_picture.thumbnail.200x200}}"
+                                                         alt="{{user_profile.user.first_name}}"/>
+                                                </div>
+                                            {% else %}
+                                                <div class="item-thumb">
+                                                    <img id="preview_profile_picture"
+                                                         class="thumbnail"
+                                                         src=""
+                                                         alt="{{user_profile.user.first_name}}"/>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-holder">
+                                <strong>{{vendor.vendor_name}}</strong>
+                                <div class="upload-gallery">
+                                    <label class="upload-btn foodbakery-dev-featured-upload-btn"
+                                           style="font-weight: normal">
+                                        {{form_user_profile.profile_picture}}
+                                        Upload Logo
+                                    </label>
+                                </div>
+                                <span style="color: red">{{form_user_profile.profile_picture.errors}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="restaurant-info">
+                            <div class="img-holder">
+                                <ul class="foodbakery-gallery-holder">
+                                    <li class="gal-img">
+                                        <div class="drag-list">
+                                            {% if user_profile.cover_photo %}
+                                                <div class="item-thumb">
+                                                    <img id="preview_cover_photo"
+                                                         class="thumbnail"
+                                                         src="{{user_profile.cover_photo.thumbnail.200x200}}"
+                                                         alt="{{user_profile.user.last_name}}">
+                                                </div>
+                                            {% else %}
+                                                <div class="item-thumb">
+                                                    <img id="preview_cover_photo"
+                                                         class="thumbnail"
+                                                         src=""
+                                                         alt="{{user_profile.user.last_name}}">
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-holder">
+                                <div class="upload-gallery">
+                                    <label class="upload-btn foodbakery-dev-featured-upload-btn"
+                                           style="font-weight: normal">
+                                        {{form_user_profile.cover_photo}}
+                                        Upload Cover Image
+                                    </label>
+                                </div>
+                                <span style="color: red">{{form_user_profile.cover_photo.errors}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="restaurant-info">
+                            <div class="img-holder">
+                                <ul class="foodbakery-gallery-holder">
+                                    <li class="gal-img">
+                                        <div class="drag-list">
+                                            <div class="item-thumb">
+                                                <img id="preview_license"
+                                                     class="thumbnail"
+                                                     src="{{vendor.vendor_license.thumbnail.200x200}}"
+                                                     alt="{{vendor.vendor_name}}">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-holder">
+                                <div class="upload-gallery">
+                                    <label class="upload-btn foodbakery-dev-featured-upload-btn"
+                                           style="font-weight: normal">
+                                        {{form_vendor.vendor_license}}
+                                        Upload License
+                                    </label>
+                                </div>
+                                <span style="color: red">{{form_vendor.vendor_license.errors}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_vendor.vendor_name.label}}</label>
+                            {{form_vendor.vendor_name}}
+                        </div>
+                        <span style="color: red">{{form_vendor.vendor_name.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.address.label}}</label>
+                            {{form_user_profile.address}}
+                            <small class="text-muted float-right">Powered by
+                                <img src="{% static 'extra-images/google_transparent.png' %}"
+                                     alt="google"/> </small>
+                            <span style="color: red; float: right;" id="address_error"></span>
+                        </div>
+                        <span style="color: red">{{form_user_profile.address.errors}}</span>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.continent.label}}</label>
+                            {{form_user_profile.continent}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.continent.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.country_code.label}}</label>
+                            {{form_user_profile.country_code}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.country_code.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.country.label}}</label>
+                            {{form_user_profile.country}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.country.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.state_code.label}}</label>
+                            {{form_user_profile.state_code}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.state_code.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.state.label}}</label>
+                            {{form_user_profile.state}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.state.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.city.label}}</label>
+                            {{form_user_profile.city}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.city.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.district.label}}</label>
+                            {{form_user_profile.district}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.district.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.location_type.label}}</label>
+                            {{form_user_profile.location_type}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.location_type.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.village.label}}</label>
+                            {{form_user_profile.village}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.village.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.county.label}}</label>
+                            {{form_user_profile.county}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.county.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.pin_code.label}}</label>
+                            {{form_user_profile.pin_code}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.pin_code.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.formatted.label}}</label>
+                            {{form_user_profile.formatted}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.formatted.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.road_info.label}}</label>
+                            {{form_user_profile.road_info}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.road_info.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.neighbourhood.label}}</label>
+                            {{form_user_profile.neighbourhood}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.neighbourhood.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.latitude.label}}</label>
+                            {{form_user_profile.latitude}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.latitude.errors}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="field-holder">
+                            <label>{{form_user_profile.longitude.label}}</label>
+                            {{form_user_profile.longitude}}
+                        </div>
+                        <span style="color: red">{{form_user_profile.longitude.errors}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div>
+            <div class="field-holder">
+                <div class="payment-holder input-button-loader">
+                    <input type="submit" value="Update Restaurant"
+                           style="background-color: #62d773">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
