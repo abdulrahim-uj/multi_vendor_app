@@ -126,3 +126,112 @@ const previewLicense = (event) => {
 };
 </script>
 {% endif %}
+
+{% if preview_product_picture %}
+<script type="text/javascript">
+const previewProductPicture = (event) => {
+    const data_for_id = event.target.getAttribute("data-for");
+    // Get the selected files.
+    const imageFiles = event.target.files;
+    // Get the image path.
+    const imageSrc = URL.createObjectURL(imageFiles[0]);
+    // Select the image preview element.
+    const imagePreviewElement = document.querySelector("[id=" + data_for_id + "]");
+    // Assign the path to the image preview element.
+    imagePreviewElement.src = imageSrc;
+};
+</script>
+{% endif %}
+
+<!--AUTOFILL-->
+{% if auto_fill_location %}
+<script type="text/javascript">
+    function auto_fill_all() {
+        const address = document.getElementById("id_address");
+
+        document.getElementById("id_continent").value = "";
+        document.getElementById("id_country_code").value = "";
+        document.getElementById("id_country").value = "";
+        document.getElementById("id_state_code").value = "";
+        document.getElementById("id_state").value = "";
+        document.getElementById("id_city").value = "";
+
+        document.getElementById("id_district").value = "";
+        document.getElementById("id_location_type").value = "";
+        document.getElementById("id_village").value = "";
+        document.getElementById("id_county").value = "";
+        document.getElementById("id_pin_code").value = "";
+
+        document.getElementById("id_formatted").value = "";
+        document.getElementById("id_road_info").value = "";
+        document.getElementById("id_neighbourhood").value = "";
+        document.getElementById("id_latitude").value = "";
+        document.getElementById("id_longitude").value = "";
+
+        document.getElementById("address_error").textContent = "";
+
+        $.ajax({
+            url: "{% url 'vendors:getLatLong' %}",
+            data: {
+                'location': address.value,
+            }
+        }).success(function (data){
+            const result = JSON.parse(data);
+            alert(result);
+            if (result === "Error"){
+                document.getElementById("address_error").textContent = "Please enter a valid location!";
+            }
+            else {
+                let _continent = ""
+                for (var i = 0; i < result.length; i++) {
+                    document.getElementById("id_continent").value = result[i]['components']['continent'];
+                    document.getElementById("id_country_code").value = result[i]['components']['country_code'];
+                    document.getElementById("id_country").value = result[i]['components']['country'];
+                    document.getElementById("id_state_code").value = result[i]['components']['state_code'];
+                    document.getElementById("id_state").value = result[i]['components']['state'];
+                    document.getElementById("id_city").value = result[i]['components']['state_district'];
+
+                    document.getElementById("id_district").value = result[i]['components']['state_district'];
+
+
+
+                    document.getElementById("id_location_type").value = result[i]['components']['_type'];
+                    document.getElementById("id_village").value = result[i]['components']['village'];
+                    document.getElementById("id_county").value = result[i]['components']['county'];
+                    document.getElementById("id_pin_code").value = result[i]['components']['postcode'];
+
+                    document.getElementById("id_formatted").value = result[i]['formatted'];
+                    document.getElementById("id_road_info").value = result[i]['annotations']['roadinfo']['road'];
+                    if (result[i]['components']['neighbourhood']) {
+                        document.getElementById("id_neighbourhood").value = result[i]['components']['neighbourhood'];
+                    }
+
+                    document.getElementById("id_latitude").value = result[i]['geometry']['lat'];
+                    document.getElementById("id_longitude").value = result[i]['geometry']['lng'];
+                }
+
+                // document.getElementById("id_country_code").value = result[0]['components']['country_code'];
+                // document.getElementById("id_country").value = result[0]['components']['country'];
+                // document.getElementById("id_state_code").value = result[0]['components']['state_code'];
+                // document.getElementById("id_state").value = result[0]['components']['state'];
+                // document.getElementById("id_city").value = result[0]['components']['state_district'];
+                //
+                // document.getElementById("id_district").value = result[0]['components']['state_district'];
+                //
+                //
+                //
+                // document.getElementById("id_location_type").value = result[0]['components']['_type'];
+                // document.getElementById("id_village").value = result[0]['components']['village'];
+                // document.getElementById("id_county").value = result[0]['components']['county'];
+                // document.getElementById("id_pin_code").value = result[0]['components']['postcode'];
+                //
+                // document.getElementById("id_formatted").value = result[0]['formatted'];
+                // document.getElementById("id_road_info").value = result[1]['annotations']['roadinfo']['road'];
+                // document.getElementById("id_neighbourhood").value = result[1]['components']['neighbourhood'];
+                // document.getElementById("id_latitude").value = result[0]['geometry']['lat'];
+                // document.getElementById("id_longitude").value = result[0]['geometry']['lng'];
+            }
+        });
+    }
+</script>
+{% endif %}

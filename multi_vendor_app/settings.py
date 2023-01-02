@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'vendors',
+    'menus',
 ]
 
 MIDDLEWARE = [

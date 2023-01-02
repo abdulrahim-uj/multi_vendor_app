@@ -16,6 +16,8 @@ urlpatterns = [
                               namespace='authentication_accounts')),
 
     path('app/auth/vendor/', include('vendors.urls', namespace="vendors")),
+
+    path('app/auth/vendor/menu-builder/', include('menus.urls', namespace='menus')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

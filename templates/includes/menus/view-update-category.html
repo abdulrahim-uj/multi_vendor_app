@@ -1,0 +1,73 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="field-holder">
+        <div class="service-list">
+            <div class="menu-items-list-holder">
+                <ul class="restaurant-menu-cats-list ui-sortable" style="display:block;">
+                    {% if categories %}
+                        {% for category in categories %}
+                            <li class="menu-item">
+                                <div class="drag-list">
+                                    <span class="drag-option ui-sortable-handle"><i
+                                            class="icon-bars"></i></span>
+                                    <div class="list-title">
+                                        <h6>{{category.category_name}}</h6>
+                                    </div>
+                                    <div class="list-option">
+                                        <a href="#{{category.slug}}"
+                                           data-toggle="collapse"
+                                           class="edit-menu-item collapsed">
+                                            <i class="icon-mode_edit"></i></a>
+                                        <a href="#" class="remove-menu-item">
+                                            <i class="icon-delete_forever"></i></a>
+                                    </div>
+                                </div>
+                                <div id="{{category.slug}}" class="collapse">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <a href="#{{category.slug}}"
+                                           data-toggle="collapse"
+                                           class="close-menu-item collapsed">
+                                            <i class="icon-close"></i></a>
+                                        <div class="row">
+                                            <form method="post" action="#">
+                                                {% csrf_token %}
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="{{form_category.category_name.id_for_label}}">
+                                                            {{form_category.category_name.label}}</label>
+                                                        <input class="menu-item-title"
+                                                               name="category_name"
+                                                               value="{{category.category_name}}" type="text" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="{{form_category.description.id_for_label}}">
+                                                            {{form_category.description.label}}</label>
+                                                        <textarea class="menu-item-desc" name="description">
+                                                            {{category.description}}
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <div id="update-menu-items-holder"
+                                                             class="payment-holder input-button-loader"
+                                                             style="float: right;position: relative;">
+                                                            <input class="redirect-button-click
+                                                            update-menu-items" value="Update Menu"
+                                                                   type="submit">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

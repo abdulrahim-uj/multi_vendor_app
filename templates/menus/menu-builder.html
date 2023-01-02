@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Section Start -->
+<div class="main-section">
+<!-- COVER PAGE SECTION PLACED HERE -->
+    {% include 'includes/accounts/vendor_cover.html' %}
+    <div class="page-section account-header buyer-logged-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <!-- SIDEBAR PLACED HERE -->
+                    {% include 'includes/accounts/vendor_sidebar.html' %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<div class="user-dashboard loader-holder">
+						<div class="user-holder">
+                            <!-- CATEGORY-FORM PLACED HERE-->
+                            {% include 'includes/menus/categories-products.html' %}
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+{% endblock %}

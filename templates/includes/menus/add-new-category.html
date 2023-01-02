@@ -1,0 +1,31 @@
+<div id="add-menu-cat-from" class="collapse">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <a href="#add-menu-cat-from" data-toggle="collapse"
+           class="close-menu-item collapsed">
+            <i class="icon-close"></i></a>
+        <div class="row">
+            <form method="post" action="#">
+                {% csrf_token %}
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="field-holder">
+                        <label for="{{form_category.category_name.id_for_label}}">
+                            {{form_category.category_name.label}}</label>
+                        {{form_category.category_name}}
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="field-holder">
+                        <label for="{{form_category.description.id_for_label}}">
+                            {{form_category.description.label}}</label>
+                        {{form_category.description}}
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="field-holder">
+                        <a class="add-menu-item add-menu-item-list" href="#">Add Category</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

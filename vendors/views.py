@@ -97,6 +97,7 @@ def v_profile(request):
         "skills_progress": False,
         "wow": False,
 
+        "auto_fill_location": True,
         "preview_profile_picture": True,
         "preview_cover_photo": True,
         "preview_license": True,

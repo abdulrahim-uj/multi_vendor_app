@@ -1,0 +1,144 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="field-holder">
+        <div class="service-list">
+            <ul id="restaurant_menu_items-list-87340687"
+                class="restaurant_menu_items_cat_list panel-group ui-sortable">
+                {% if categories %}
+                {% for category in categories %}
+                    <li id="menu-pizzas" class="panel panel-default">
+                        <div class="element-title panel-heading">
+                            <span class="drag-option ui-sortable-handle"><i class="icon-bars"></i></span>
+                            <a data-toggle="collapse" data-parent="#restaurant_menu_items-list-87340687"
+                               href="#collapse-{{category.slug}}" aria-expanded="false"
+                               class="collapsed">{{category.category_name}}</a>
+                        </div>
+<!--                        {% for product in products %}-->
+<!--                            {% if product.category == category %}-->
+                                <div id="collapse-{{category.slug}}" class="panel-collapse collapse"
+                                     aria-expanded="false"
+                                     role="tabpanel">
+                                    <ul class="menu-items-list ui-sortable">
+                                        {% for product in products %}
+                                        {% if product.category == category %}
+                                        <li>
+                                            <div class="drag-list">
+                                                <span class="drag-option ui-sortable-handle">
+                                                    <i class="icon-bars"></i>
+                                                </span>
+                                                <div class="icon-holder">
+                                                    <img src="{{product.picture.thumbnail.200x200}}" alt="">
+                                                </div>
+                                                <div class="list-title">
+                                                    <h6>{{product.product_name}}</h6>
+                                                    <p>{{product.description | truncatewords:10}}</p>
+                                                </div>
+                                                <div class="list-price">
+                                                    <span><b>$</b><b>{{product.price}}</b></span>
+                                                </div>
+                                                <div class="list-option">
+                                                    <a data-toggle="collapse" href="#{{product.slug}}"
+                                                       class="edit-menu-item"><i class="icon-mode_edit"></i></a>
+                                                    <a href="#" class="remove-menu-item">
+                                                        <i class="icon-close"></i></a>
+                                                </div>
+                                            </div>
+<!--                                            UPDATE FORM START HERE-->
+                                            <div id="{{product.slug}}" class="collapse">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <a data-toggle="collapse" href="#{{product.slug}}"
+                                                       class="close-menu-item"><i class="icon-close"></i></a>
+                                                    <form action="#" method="post" enctype="multipart/form-data">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="field-holder">
+                                                                    <label for="{{form_product.category.id_for_label}}">
+                                                                        {{form_product.category.label}}</label>
+                                                                    <div class="restaurants-menu">
+                                                                        {{form_product.category}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                                <div class="field-holder">
+                                                                    <label for="{{form_product.product_name.id_for_label}}">{{form_product.product_name.label}}</label>
+                                                                    <input class="menu-item-title"
+                                                                           value="{{product.product_name}}"
+                                                                           type="text" name="product_name" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                                <div class="field-holder">
+                                                                    <label for="{{form_product.price.id_for_label}}">{{form_product.price.label}}</label>
+                                                                    <input class="menu-item-price" type="number" value="{{product.price}}"
+                                                                        name="price">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                                <div class="upload-gallery">
+                                                                    <label for="{{form_product.picture.id_for_label}}"
+                                                                           style="display: block; position: relative; color: #2f313a; font-size: 12px;
+                                                                                    line-height: 18px; margin-bottom: 8px;">{{form_product.picture.label}}</label>
+                                                                    <div id="{{form_product.picture.id_for_label}}" class="upload-gallery"
+                                                                         style="display: block !important;">
+                                                                        <label class="upload-btn foodbakery-dev-featured-upload-btn"
+                                                                               style="font-weight: normal; position: initial !important;">
+                                                                            <input type="file" name="picture"
+                                                                                   data-for="preview_product_picture{{forloop.counter}}"
+                                                                                   class="inputfile inputfile-1 foodbakery-dev-gallery-uploader"
+                                                                                   style="display:none" onchange="previewProductPicture(event);"
+                                                                                   accept="image/*" required="" id="id_picture">
+                                                                            Upload Image
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                                <div class="field-holder" style="width: 460px;">
+                                                                    <label for="{{form_product.description.id_for_label}}">{{form_product.description.label}}</label>
+                                                                    <textarea name="description" cols="20" rows="5"
+                                                                              class="menu-item-desc" maxlength="256"
+                                                                              id="id_description" spellcheck="false">{{product.description}}</textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                                <div class="field-holder" >
+                                                                    <label for="preview_image1">Preview</label>
+                                                                    <div class="item-thumb" style="height: 155px;">
+                                                                        <img id="preview_product_picture{{forloop.counter}}"
+                                                                             class="thumbnail"
+                                                                             src="{{product.picture.thumbnail.200x200}}"
+                                                                             alt="" style="height: 155px; width: 155px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="field-holder" style="width: fit-content;">
+                                                                    <label for="{{form_product.is_available.id_for_label}}">{{form_product.is_available.label}}</label>
+                                                                    <input type="checkbox" name="is_available" class="menu-item-title"
+                                                                           id="id_is_available" checked="{{product.is_available}}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="field-holder">
+                                                                    <input type="submit" value="Update"
+                                                                           class="add-menu-item add-menu-item-list add-menu-item-list-681849489" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+<!--                            {% endif %}-->
+<!--                        {% endfor %}-->
+                    </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
