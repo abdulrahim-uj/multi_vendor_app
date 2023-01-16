@@ -1,0 +1,33 @@
+{% load static %}
+<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 0px;margin-bottom: 0px;background: #ffffff;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="element-title align-left">
+						<h2>Top Restaurants</h2>
+						<p>Explore restaurants, bars, and cafés by locality</p>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="company-logo">
+						<ul>
+                            {% for vendor in vendors %}
+                                <li class="has-border">
+                                    <figure>
+                                        {% if vendor.user_profile.profile_picture %}
+                                            <a href="#">
+                                                <img src="{{ vendor.user_profile.profile_picture.thumbnail.200x200 }}"
+                                                     class="attachment-full size-full wp-post-image" alt="">
+                                            </a>
+                                        {% else %}
+
+                                        {% endif %}
+                                    </figure>
+                                </li>
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

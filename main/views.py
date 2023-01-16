@@ -2,12 +2,15 @@ from django.shortcuts import render
 from django.http.response import HttpResponseRedirect  # HttpResponse
 from django.urls import reverse
 
+from vendors.models import Vendor
+
 
 def app(request):
     return HttpResponseRedirect(reverse('beginning'))
 
 
 def opening(request):
+    vendors = Vendor.objects.filter(is_approved=True, user__is_active=True)[:8]
     context = {
         "title": "Dashboard",
         # CSS
@@ -43,5 +46,7 @@ def opening(request):
         "masonry": False,
         "skills_progress": False,
         "wow": False,
+
+        "vendors": vendors,
     }
     return render(request, "main/home.html", context)
