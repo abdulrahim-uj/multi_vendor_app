@@ -17,6 +17,9 @@ class Category(BaseModel):
         verbose_name_plural = _('categories')
         ordering = ('-created_at', 'category_name')
 
+    def clean(self):
+        self.category_name = self.category_name.capitalize()
+
     def __str__(self):
         return self.category_name
 
@@ -37,6 +40,9 @@ class Product(BaseModel):
         verbose_name = _('product')
         verbose_name_plural = _('products')
         ordering = ('-created_at', 'product_name')
+
+    def clean(self):
+        self.product_name = self.product_name.capitalize()
 
     def __str__(self):
         return self.product_name

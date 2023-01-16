@@ -12,8 +12,7 @@ class CategoryMenuForm(forms.ModelForm):
         widgets = {
             'category_name': TextInput(attrs={'class': 'menu-item-title', 'placeholder': "Menu Category Title",
                                               'required': True}),
-            'description': Textarea(attrs={'class': 'menu-item-desc', 'placeholder': 'Category Description',
-                                           'required': True}),
+            'description': Textarea(attrs={'class': 'menu-item-desc', 'placeholder': 'Category Description'}),
         }
         error_messages = {
             'category_name': {
@@ -39,7 +38,7 @@ class ProductMenuForm(forms.ModelForm):
             'product_name': TextInput(attrs={'class': 'menu-item-title', 'placeholder': "Product title",
                                              'required': True}),
             'description': Textarea(attrs={'class': 'menu-item-desc', 'placeholder': 'Product Description',
-                                           'required': True, 'cols': 20, 'rows': 5}),
+                                           'cols': 20, 'rows': 5}),
             'price': NumberInput(attrs={'class': 'menu-item-title', 'placeholder': "Product price",
                                         'required': True}),
             'picture': FileInput(attrs={'class': 'inputfile inputfile-1 foodbakery-dev-gallery-uploader',

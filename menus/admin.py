@@ -6,7 +6,7 @@ from menus.models import Category, Product
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('category_name', )}
     list_display = ('id', 'auto_id', 'vendor', 'category_name', 'slug',
-                    'description', 'creator', 'updater', 'created_at',
+                    'creator', 'updater', 'created_at',
                     'modified_at', 'is_deleted')
     list_display_links = ('vendor',)
     # list_editable = ('is_approved', )
@@ -20,7 +20,7 @@ admin.site.register(Category, CategoryAdmin)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('product_name', )}
     list_display = ('id', 'auto_id', 'vendor', 'category', 'product_name', 'slug',
-                    'description', 'price', 'picture', 'is_available', 'creator',
+                    'price', 'picture', 'is_available', 'creator',
                     'updater', 'created_at', 'modified_at', 'is_deleted')
     list_display_links = ('vendor', 'category',)
     list_editable = ('is_available', 'price',)

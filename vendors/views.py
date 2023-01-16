@@ -130,3 +130,10 @@ def get_lat_long(request):
         message = "Error"
         # return redirect('vendors:vendorProfile')
         return HttpResponse(json.dumps(message), content_type='application/javascript')
+
+
+@login_required(login_url='accounts:signIn')
+@user_passes_test(check_role_vendor)
+def get_vendor(request):
+    vendor = Vendor.objects.get(user=request.user)
+    return vendor
