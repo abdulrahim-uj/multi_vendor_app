@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import render, redirect
+from django.template.defaultfilters import slugify
 from django.utils.http import urlsafe_base64_decode
 from izitoast.functions import izitoast
 
@@ -160,6 +161,8 @@ def register_vendor(request):
 
             vendor = v_form.save(commit=False)
             vendor.user = user
+            vendor_name = v_form.cleaned_data['vendor_name']
+            vendor.slug = slugify(vendor_name)
             vendor.user_profile = user_profile_key
             vendor.auto_id = get_auto_id(Vendor)
             vendor.creator = user
@@ -432,19 +435,19 @@ def vendor_dashboard(request):
         "bootstrap": True,
         "bootstrap_theme": True,
         "icon_moon": True,
-        "swiper": True, # For Dropdown menu
+        "swiper": True,  # For Dropdown menu
         "style_theme": True,
         "system_food_backery": True,
         "colors": True,
         "widgets": True,
         "responsive": True,
-        "bootstrap_datepicker": False,#
-        "bootstrap_slider": False,#
-        "woo_commerce": False,#
-        "pretty_photo": False,#
-        "animate": False,#
-        "chosen": False,#
-        "rtl": False,#
+        "bootstrap_datepicker": False,  #
+        "bootstrap_slider": False,  #
+        "woo_commerce": False,  #
+        "pretty_photo": False,  #
+        "animate": False,  #
+        "chosen": False,  #
+        "rtl": False,  #
         # JS
         "ajax1112": True,
         "counter": True,

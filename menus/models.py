@@ -26,7 +26,10 @@ class Category(BaseModel):
 
 class Product(BaseModel):
     vendor = models.ForeignKey("vendors.Vendor", on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    ''' related_name='products'
+        for reverse lookup views...
+        related name same as model name in small letters with plural '''
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     product_name = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128, unique=True)
     description = models.TextField(max_length=256, blank=True)

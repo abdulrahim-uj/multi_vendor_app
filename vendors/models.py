@@ -12,6 +12,7 @@ class Vendor(BaseModel):
     user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
     user_profile = models.OneToOneField(UserProfile, related_name='userprofile', on_delete=models.CASCADE)
     vendor_name = models.CharField(max_length=180)
+    slug = models.SlugField(max_length=128, unique=True)
     vendor_license = VersatileImageField('vendor_license', upload_to='vendors/license/',
                                          validators=[allow_only_images_validator],
                                          blank=True, null=True)

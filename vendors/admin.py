@@ -4,6 +4,7 @@ from . models import Vendor
 
 
 class VendorAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('vendor_name',)}
     list_display = ('id', 'auto_id', 'user', 'user_profile', 'vendor_name',
                     'vendor_license', 'is_approved', 'creator', 'updater', 'created_at',
                     'modified_at', 'is_deleted')

@@ -30,19 +30,26 @@
 										</span>
                                         </div>
                                         <div class="text-holder">
-                                            <div class="list-rating">
-                                                <div class="rating-star">
-                                                    <span class="rating-box" style="width: 100%;"></span>
-                                                </div>
-                                                <span class="reviews">(1)</span>
-                                            </div>
+{#                                            <div class="list-rating">#}
+{#                                                <div class="rating-star">#}
+{#                                                    <span class="rating-box" style="width: 100%;"></span>#}
+{#                                                </div>#}
+{#                                                <span class="reviews">(1)</span>#}
+{#                                            </div>#}
                                             <div class="post-title">
                                                 <h5>
                                                     <a href="#">{{ vendor.vendor_name }}</a>
                                                     <span class="sponsored text-color">Sponsored</span>
                                                 </h5>
                                             </div>
-                                            <address><span>Type of food : </span> Apple Juice</address>
+                                            <address>
+                                                {% if vendor.user_profile.address %}
+                                                    <span>
+                                                        {{ vendor.user_profile.address }},
+                                                        {{ vendor.user_profile.city }}
+                                                    </span>
+                                                {% endif %}
+                                            </address>
                                             <div class="delivery-potions">
                                                 <div class="post-time">
                                                     <i class="icon-motorcycle"></i>
